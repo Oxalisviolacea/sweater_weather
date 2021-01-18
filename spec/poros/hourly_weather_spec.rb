@@ -22,7 +22,7 @@ RSpec.describe HourlyWeather do
     expect(hourly_weather.time).to eq('15:00:00')
     expect(hourly_weather.temp).to eq(281.77)
     expect(hourly_weather.wind_speed).to eq(1.69)
-    expect(hourly_weather.wind_direction).to eq('SSE')
+    expect(hourly_weather.wind_direction).to eq('from SSE')
     expect(hourly_weather.conditions).to eq('broken clouds')
     expect(hourly_weather.icon).to eq('04d')
   end
