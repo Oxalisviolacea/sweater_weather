@@ -41,19 +41,19 @@ describe "Forecast API" do
     expect(current_weather[:sunset]).to be_a String
 
     expect(current_weather).to have_key :temperature
-    expect(current_weather[:temperature]).to be_a Float
+    expect(current_weather[:temperature]).to be_an(Numeric)
 
     expect(current_weather).to have_key :feels_like
-    expect(current_weather[:feels_like]).to be_a Float
+    expect(current_weather[:feels_like]).to be_an(Numeric)
 
     expect(current_weather).to have_key :humidity
-    expect(current_weather[:humidity]).to be_a Integer
+    expect(current_weather[:humidity]).to be_an(Numeric)
 
     expect(current_weather).to have_key :uvi
-    expect(current_weather[:uvi]).to be_a Integer
+    expect(current_weather[:uvi]).to be_an(Numeric)
 
     expect(current_weather).to have_key :visibility
-    expect(current_weather[:visibility]).to be_a Integer
+    expect(current_weather[:visibility]).to be_an(Numeric)
 
     expect(current_weather).to have_key :conditions
     expect(current_weather[:conditions]).to be_a String
@@ -84,10 +84,10 @@ describe "Forecast API" do
       expect(dw[:sunset]).to be_a String
 
       expect(dw).to have_key :max_temp
-      expect(dw[:max_temp]).to be_a Float
+      expect(dw[:max_temp]).to be_an(Numeric)
 
       expect(dw).to have_key :min_temp
-      expect(dw[:min_temp]).to be_a Float
+      expect(dw[:min_temp]).to be_an(Numeric)
 
       expect(dw).to have_key :conditions
       expect(dw[:conditions]).to be_a String
@@ -110,10 +110,10 @@ describe "Forecast API" do
       expect(dw[:time]).to be_a String
 
       expect(dw).to have_key :temp
-      expect(dw[:temp]).to be_a Float
+      expect(dw[:temp]).to be_an(Numeric)
 
       expect(dw).to have_key :wind_speed
-      expect(dw[:wind_speed]).to be_a Float
+      expect(dw[:wind_speed]).to be_an(Numeric)
 
       expect(dw).to have_key :wind_direction
       expect(dw[:wind_direction]).to be_a String

@@ -10,28 +10,28 @@ describe WeatherService do
         expect(current_weather).to be_a Hash
 
         expect(current_weather).to have_key :dt
-        expect(current_weather[:dt]).to be_an(Integer)
+        expect(current_weather[:dt]).to be_an(Numeric)
 
         expect(current_weather).to have_key :sunrise
-        expect(current_weather[:sunrise]).to be_a(Integer)
+        expect(current_weather[:sunrise]).to be_an(Numeric)
 
         expect(current_weather).to have_key :sunset
-        expect(current_weather[:sunset]).to be_a(Integer)
+        expect(current_weather[:sunset]).to be_an(Numeric)
 
         expect(current_weather).to have_key :temp
-        expect(current_weather[:temp]).to be_a(Float)
+        expect(current_weather[:temp]).to be_an(Numeric)
 
         expect(current_weather).to have_key :feels_like
-        expect(current_weather[:feels_like]).to be_a(Float)
+        expect(current_weather[:feels_like]).to be_an(Numeric)
 
         expect(current_weather).to have_key :humidity
-        expect(current_weather[:humidity]).to be_a(Integer)
+        expect(current_weather[:humidity]).to be_an(Numeric)
 
         expect(current_weather).to have_key :uvi
-        expect(current_weather[:uvi]).to be_a(Integer)
+        expect(current_weather[:uvi]).to be_an(Numeric)
 
         expect(current_weather).to have_key :visibility
-        expect(current_weather[:visibility]).to be_a(Integer)
+        expect(current_weather[:visibility]).to be_an(Numeric)
 
         expect(current_weather).to have_key :weather
         expect(current_weather[:weather]).to be_an Array
@@ -52,13 +52,13 @@ describe WeatherService do
 
         hourly_weather.each do |hour|
           expect(hour).to have_key :dt
-          expect(hour[:dt]).to be_an(Integer)
+          expect(hour[:dt]).to be_an(Numeric)
 
           expect(hour).to have_key :temp
-          expect(hour[:temp]).to be_a(Float)
+          expect(hour[:temp]).to be_an(Numeric)
 
           expect(hour).to have_key :wind_speed
-          expect(hour[:wind_speed]).to be_a(Float)
+          expect(hour[:wind_speed]).to be_an(Numeric)
 
           expect(hour).to have_key :weather
           expect(hour[:weather]).to be_an Array
@@ -83,22 +83,22 @@ describe WeatherService do
 
         daily_weather.each do |day|
           expect(day).to have_key :dt
-          expect(day[:dt]).to be_an(Integer)
+          expect(day[:dt]).to be_an(Numeric)
 
           expect(day).to have_key :sunrise
-          expect(day[:sunrise]).to be_a(Integer)
+          expect(day[:sunrise]).to be_an(Numeric)
 
           expect(day).to have_key :sunset
-          expect(day[:sunset]).to be_a(Integer)
+          expect(day[:sunset]).to be_an(Numeric)
 
           expect(day).to have_key :temp
           expect(day[:temp]).to be_a Hash
 
           expect(day[:temp]).to have_key :max
-          expect(day[:temp][:max]).to be_a(Float)
+          expect(day[:temp][:max]).to be_an(Numeric)
 
           expect(day[:temp]).to have_key :min
-          expect(day[:temp][:min]).to be_a(Float).or be_an(Integer)
+          expect(day[:temp][:min]).to be_an(Numeric).or be_an(Integer)
 
           expect(day).to have_key :weather
           expect(day[:weather]).to be_an Array
