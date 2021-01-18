@@ -5,6 +5,6 @@ class WeatherService
   end
 
   def self.conn
-    Faraday.new(url: "https://api.openweathermap.org")
+    Faraday.new(url: 'https://api.openweathermap.org')
   end
 end

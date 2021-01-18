@@ -1,5 +1,6 @@
 class DailyWeather
   attr_reader :date, :sunrise, :sunset, :max_temp, :min_temp, :conditions, :icon
+
   def initialize(attributes)
     @date = Time.at(attributes[:dt]).strftime('%Y-%m-%d')
     @sunrise = Time.at(attributes[:sunrise]).to_s
