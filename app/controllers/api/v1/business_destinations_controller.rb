@@ -5,19 +5,18 @@ class Api::V1::BusinessDestinationsController < ApplicationController
   def index
     start_location = params[:start_location]
     end_location = params[:end_location]
+    category = params[:food]
+    term = 'food'
 
-    a = end_location.split(",")
-    a[1].upcase!
-    a[0].capitalize!
-  end_location_formatted = a.join(", ")
+    format_end_location = end_location.split(",")
+    format_end_location[1].upcase!
+    format_end_location[0].capitalize!
+    end_location_formatted = a.join(", ")
 
     drive_time = LocationService.drive_time(start_location, end_location)
     drive_time_in_s = drive_time[:route][:time]
     drive_time_hms = drive_time[:route][:formattedTime]
-
     drive_time_words = drive_time_hms.to_datetime.strftime("%H hours, %M minutes, and %S seconds")
-    category = params[:food]
-    term = 'food'
     arrival_time = DateTime.parse((Time.now + drive_time_in_s).to_s).to_time.to_i
 
     hourly_weather = WeatherFacade.hourly_weather(end_location)
@@ -35,9 +34,10 @@ class Api::V1::BusinessDestinationsController < ApplicationController
       f.params[:open_at] = arrival_time
       f.params[:term] = term
     end
-    
+
     parsed_json = JSON.parse(response.body, symbolize_names: true)
     business = parsed_json[:businesses].first
+    
     render json: BusinessDestinationsSerializer.format_data(drive_time_words, end_location_formatted, business, destination_weather)
   end
 end
