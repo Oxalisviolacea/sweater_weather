@@ -10,4 +10,9 @@ class LocationService
       faraday.params['key'] = ENV['LOCATION-API-KEY']
     end
   end
+
+  def self.trip_plan(origin, destination)
+    response = conn.get("/directions/v2/route?to=#{origin}&from=#{destination}")
+    json = JSON.parse(response.body, symbolize_names: true)
+  end
 end
