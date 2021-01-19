@@ -45,6 +45,6 @@ describe 'Background API Endpoint' do
     expect(json[:data][:attributes][:restaurant][:name]).to be_a String
 
     expect(json[:data][:attributes][:restaurant]).to have_key :address
-    expect(json[:data][:attributes][:restaurant][:address]).to be_a Integer
+    expect(json[:data][:attributes][:restaurant][:address]).to be_a String
   end
 end
