@@ -5,9 +5,9 @@ class Api::V1::UsersController < ApplicationController
       render json: UserSerializer.format_data(User.last)
     else
       render json: {
-                      error: "Invalid email or password",
-                      status: 400
-                    }, status: 400
+        error: 'Invalid email or password',
+        status: 400
+      }, status: 400
     end
   end
 

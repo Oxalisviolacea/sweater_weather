@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-describe "Forecast API" do
-  it "can create a new user" do
+describe 'Forecast API' do
+  it 'can create a new user' do
     body = {
-              "email": "whatever@example.com",
-              "password": "password",
-              "password_confirmation": "password"
-            }
+      "email": 'whatever@example.com',
+      "password": 'password',
+      "password_confirmation": 'password'
+    }
 
-    headers = {'Content_Type' => 'application/json', 'Accept' => 'application/json'}
+    headers = { 'Content_Type' => 'application/json', 'Accept' => 'application/json' }
 
     post '/api/v1/users', headers: headers, params: body, as: :json
 

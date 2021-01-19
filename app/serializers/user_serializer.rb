@@ -2,7 +2,7 @@ class UserSerializer
   def self.format_data(user)
     {
       "data": {
-        "type": "users",
+        "type": 'users',
         "id": user.id,
         "attributes": {
           "email": user.email,
