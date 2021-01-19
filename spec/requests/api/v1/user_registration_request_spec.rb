@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'User API Endpoint' do
+describe 'User Registration API Endpoint' do
   it 'can create a new user' do
     body = {
       "email": 'whatever@example.com',
