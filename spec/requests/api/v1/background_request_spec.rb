@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Background API' do
+describe 'Background API Endpoint' do
   it 'it can send an image from unsplash' do
     get '/api/v1/backgrounds?location=denver,co'
 
