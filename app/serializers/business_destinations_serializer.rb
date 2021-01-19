@@ -1,17 +1,15 @@
 class BusinessDestinationsSerializer
-  def self.format_data(time, business, daily_weather, end_location)
-    require 'pry'; binding.pry
+  def self.format_data(drive_time_words, end_location_formatted, business, destination_weather)
     {
       "data": {
-        "id": "nil",
+        "id": nil,
         "type": "munchie",
         "attributes": {
-          "destination_city": end_location,
-          "travel_time": time,
+          "destination_city": end_location_formatted,
+          "travel_time": drive_time_words,
           "forecast": {
-            "summary": daily_weather.summary,
-            "min temp": daily_weather.first.min_temp
-            "max temp": daily_weather.first.max_temp
+            "summary": destination_weather.conditions,
+            "temperature": destination_weather.temp.to_i
           },
           "restaurant": {
             "name": business[:name],
