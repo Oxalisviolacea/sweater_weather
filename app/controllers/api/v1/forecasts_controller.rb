@@ -1,4 +1,4 @@
-class Api::V1::ForecastController < ApplicationController
+class Api::V1::ForecastsController < ApplicationController
   def show
     location = params[:location]
     current = WeatherFacade.current_weather(location)
