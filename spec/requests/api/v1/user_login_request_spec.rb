@@ -2,13 +2,12 @@ require 'rails_helper'
 
 describe 'User Login API Endpoint' do
   it 'can create a new user' do
-
     user1 = User.create!(email: 'whatever@example.com', password: 'password', password_confirmation: 'password')
-    user2 = User.create!(email: "whatev@ex.com", password: 'pw', password_confirmation: 'pw')
+    User.create!(email: 'whatev@ex.com', password: 'pw', password_confirmation: 'pw')
     body = {
-              "email": "whatever@example.com",
-              "password": "password"
-            }
+      "email": 'whatever@example.com',
+      "password": 'password'
+    }
 
     headers = { 'Content_Type' => 'application/json', 'Accept' => 'application/json' }
 
