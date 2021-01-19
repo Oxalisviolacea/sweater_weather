@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'Forecast API' do
-  it 'can create a new user' do
+describe 'Session API Endpoint' do
+  it 'can return the user' do
     body = {
       "email": 'whatever@example.com',
       "password": 'password',
