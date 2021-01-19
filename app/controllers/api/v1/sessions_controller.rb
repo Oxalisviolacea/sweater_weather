@@ -1,8 +1,8 @@
 class Api::V1::SessionsController < ApplicationController
-  def create
-    user = User.create(user_params)
-    if user.save
-      render json: UserSerializer.format_data(User.last)
+  def show
+    user = User.find_by(email: params[:email])
+    if user
+      render json: UserSerializer.format_data(user)
     else
       render json: {
         error: 'Invalid email or password',
@@ -14,6 +14,6 @@ class Api::V1::SessionsController < ApplicationController
   private
 
   def user_params
-    params.permit(:email, :password, :password_confirmation)
+    params.permit(:email, :password)
   end
 end
