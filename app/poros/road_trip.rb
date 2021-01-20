@@ -2,6 +2,7 @@ class RoadTrip
   attr_reader :travel_time, :origin, :destination, :temp_at_eta, :conditions_at_eta
 
   def initialize(origin, destination, trip_plan, forecast)
+
     @travel_time = format_travel_time(trip_plan[:route][:formattedTime])
     @origin = format_location(origin)
     @destination = format_location(destination)
@@ -14,10 +15,10 @@ class RoadTrip
   end
 
   def format_location(location)
-    location.split(',')
-    location[1].upcase!
-    location[0].capitalize!
-    location.gsub(',', ', ')
+    location_arr = location.split(',')
+    city = location_arr.first.capitalize
+    state = location_arr.second.upcase
+    city + ", " + state
   end
 
   def eta(forecast, trip_plan)
