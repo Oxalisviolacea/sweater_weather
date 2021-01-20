@@ -14,10 +14,10 @@ class RoadTrip
   end
 
   def format_location(location)
-    location.split(',')
-    location[1].upcase!
-    location[0].capitalize!
-    location.gsub(',', ', ')
+    location_arr = location.split(',')
+    city = location_arr[0].capitalize!
+    state = location_arr[1].upcase!
+    city + ", " + state
   end
 
   def eta(forecast, trip_plan)
