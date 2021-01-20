@@ -3,6 +3,7 @@ require 'rails_helper'
 describe WeatherService do
   context "instance methods" do
     it "it can find the current weather for a given lat long" do
+      VCR.use_cassette('weather_service') do
         search = WeatherService.forecasts({:lat=>39.738453, :lng=>-104.984853})
         expect(search).to be_a Hash
 
@@ -41,9 +42,11 @@ describe WeatherService do
 
         expect(current_weather[:weather].first).to have_key :icon
         expect(current_weather[:weather].first[:icon]).to be_a(String)
+      end
     end
 
     it "it can find the hourly weather for a given lat long" do
+      VCR.use_cassette('weather_service') do
         search = WeatherService.forecasts({:lat=>39.738453, :lng=>-104.984853})
         expect(search).to be_a Hash
 
@@ -71,10 +74,12 @@ describe WeatherService do
 
           expect(hour[:weather].first).to have_key :icon
           expect(hour[:weather].first[:icon]).to be_a(String)
+        end
       end
     end
 
     it "it can find the daily weather for a given lat long" do
+      VCR.use_cassette('weather_service') do
         search = WeatherService.forecasts({:lat=>39.738453, :lng=>-104.984853})
         expect(search).to be_a Hash
 
@@ -109,12 +114,15 @@ describe WeatherService do
           expect(day[:weather].first).to have_key :icon
           expect(day[:weather].first[:icon]).to be_a(String)
         end
+      end
     end
 
     it "it does not include unnecessary data" do
-      search = WeatherService.forecasts({:lat=>39.738453, :lng=>-104.984853})
-      expect(search).to_not have_key :minutely
-      expect(search).to_not have_key :alerts
+      VCR.use_cassette('weather_service') do
+        search = WeatherService.forecasts({:lat=>39.738453, :lng=>-104.984853})
+        expect(search).to_not have_key :minutely
+        expect(search).to_not have_key :alerts
+      end
     end
   end
 end

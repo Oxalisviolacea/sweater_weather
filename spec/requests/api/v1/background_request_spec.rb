@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Background API Endpoint' do
   it 'it can send an image from unsplash' do
-    # VCR.user_cassette('background') do
+    VCR.use_cassette('background_request') do
       get '/api/v1/backgrounds?location=denver,co'
 
       expect(response).to be_successful
@@ -45,6 +45,6 @@ describe 'Background API Endpoint' do
 
       expect(image[:credit]).to have_key :logo
       expect(image[:credit][:logo]).to be_a String
-    # end
+    end
   end
 end
