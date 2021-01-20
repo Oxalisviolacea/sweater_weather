@@ -1,7 +1,8 @@
 require 'rails_helper'
 
-describe "Forecast API Endpoint" do
-  it "it can send the introductory information" do
+describe 'Forecast API Endpoint' do
+  it 'it can send the introductory information' do
+    # VCR.use_cassette('forecast_request') do
     get '/api/v1/forecast?location=denver,co'
 
     expect(response).to be_successful
@@ -9,7 +10,7 @@ describe "Forecast API Endpoint" do
     json = JSON.parse(response.body, symbolize_names: true)
     expect(json).to have_key(:data)
     expect(json[:data]).to be_a Hash
-    
+
     expect(json[:data]).to have_key :id
     expect(json[:data][:id]).to eq(nil)
 
@@ -18,9 +19,11 @@ describe "Forecast API Endpoint" do
 
     expect(json[:data]).to have_key :attributes
     expect(json[:data][:attributes]).to be_a Hash
+    # end
   end
 
-  it "it can send the current weather" do
+  it 'it can send the current weather' do
+    # VCR.use_cassette('forecast_request') do
     get '/api/v1/forecast?location=denver,co'
 
     expect(response).to be_successful
@@ -60,9 +63,10 @@ describe "Forecast API Endpoint" do
 
     expect(current_weather).to have_key :icon
     expect(current_weather[:icon]).to be_a String
+    # end
   end
 
-  it "it can send the daily weather" do
+  it 'it can send the daily weather' do
     get '/api/v1/forecast?location=denver,co'
 
     expect(response).to be_successful
@@ -94,7 +98,8 @@ describe "Forecast API Endpoint" do
     end
   end
 
-  it "it can send the hourly weather" do
+  it 'it can send the hourly weather' do
+    # VCR.use_cassette('forecast_request') do
     get '/api/v1/forecast?location=denver,co'
 
     expect(response).to be_successful
@@ -104,7 +109,7 @@ describe "Forecast API Endpoint" do
 
     expect(weather).to have_key :hourly_weather
     daily_weather = weather[:hourly_weather]
-    
+
     daily_weather.each do |dw|
       expect(dw).to have_key :time
       expect(dw[:time]).to be_a String
@@ -120,6 +125,7 @@ describe "Forecast API Endpoint" do
 
       expect(dw).to have_key :conditions
       expect(dw[:conditions]).to be_a String
+      # end
     end
   end
 end
