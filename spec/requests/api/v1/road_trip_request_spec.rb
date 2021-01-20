@@ -32,12 +32,12 @@ describe 'Road Trip API Endpoint' do
     expect(background[:data][:attributes]).to be_a Hash
 
     expect(background[:data][:attributes]).to have_key :start_city
-    expect(background[:data][:attributes][:start_city]).to be_a Hash
-    expect(background[:data][:attributes][:start_city]).to eq(body[:origin])
+    expect(background[:data][:attributes][:start_city]).to be_a String
+    expect(background[:data][:attributes][:start_city]).to eq('Denver, CO')
 
     expect(background[:data][:attributes]).to have_key :end_city
-    expect(background[:data][:attributes][:end_city]).to be_a Hash
-    expect(background[:data][:attributes][:start_city]).to eq(body[:destination])
+    expect(background[:data][:attributes][:end_city]).to be_a String
+    expect(background[:data][:attributes][:end_city]).to eq('Pueblo, CO')
 
     expect(background[:data][:attributes]).to have_key :travel_time
     expect(background[:data][:attributes][:travel_time]).to be_a String
