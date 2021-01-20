@@ -39,4 +39,38 @@ describe 'User Login API Endpoint' do
     expect(user_response[:data][:attributes][:api_key]).to be_a String
     expect(user_response[:data][:attributes][:api_key]).to eq(user1.api_key)
   end
+
+  it 'will return a 400 if the password is wrong' do
+    User.create!(email: 'whatever@example.com', password: 'password', password_confirmation: 'password')
+    User.create!(email: 'whatev@ex.com', password: 'pw', password_confirmation: 'pw')
+    body = {
+      "email": 'whatever@example.com',
+      "password": 'WRONG password'
+    }
+
+    headers = { 'Content_Type' => 'application/json', 'Accept' => 'application/json' }
+
+    post '/api/v1/sessions', headers: headers, params: body, as: :json
+
+    expect(response).to have_http_status(400)
+    parsed = JSON.parse(response.body, symbolize_names: true)
+    expect(parsed[:error]).to eq('Credentials are bad')
+  end
+
+  it 'will return a 400 if the email is wrong' do
+    User.create!(email: 'whatever@example.com', password: 'password', password_confirmation: 'password')
+    User.create!(email: 'whatev@ex.com', password: 'pw', password_confirmation: 'pw')
+    body = {
+      "email": 'wrong_whatever@example.com',
+      "password": 'password'
+    }
+
+    headers = { 'Content_Type' => 'application/json', 'Accept' => 'application/json' }
+
+    post '/api/v1/sessions', headers: headers, params: body, as: :json
+
+    expect(response).to have_http_status(400)
+    parsed = JSON.parse(response.body, symbolize_names: true)
+    expect(parsed[:error]).to eq('Credentials are bad')
+  end
 end
