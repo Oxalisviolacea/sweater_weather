@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Business do
   it 'exists' do
     business_info = { R: { res_id: 17_589_269, is_grocery_store: false, has_menu_status: { delivery: -1, takeaway: -1 } },
-                      apikey: 'e321d657c14b444887af50b2b28a6c2e',
+                      apikey: 'xxxxxx',
                       id: '17589269',
                       name: "Angelo's Pizza Parlor",
                       url: 'https://www.zomato.com/pueblo-co/angelos-pizza-parlor-pueblo?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1',
