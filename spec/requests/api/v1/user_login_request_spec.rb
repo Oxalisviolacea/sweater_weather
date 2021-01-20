@@ -41,7 +41,7 @@ describe 'User Login API Endpoint' do
   end
 
   it 'will return a 400 if the password is wrong' do
-    user1 = User.create!(email: 'whatever@example.com', password: 'password', password_confirmation: 'password')
+    User.create!(email: 'whatever@example.com', password: 'password', password_confirmation: 'password')
     User.create!(email: 'whatev@ex.com', password: 'pw', password_confirmation: 'pw')
     body = {
       "email": 'whatever@example.com',
@@ -58,7 +58,7 @@ describe 'User Login API Endpoint' do
   end
 
   it 'will return a 400 if the email is wrong' do
-    user1 = User.create!(email: 'whatever@example.com', password: 'password', password_confirmation: 'password')
+    User.create!(email: 'whatever@example.com', password: 'password', password_confirmation: 'password')
     User.create!(email: 'whatev@ex.com', password: 'pw', password_confirmation: 'pw')
     body = {
       "email": 'wrong_whatever@example.com',
