@@ -8,7 +8,5 @@ RSpec.describe 'BusinessDestinations Facade' do
     business = BusinessDestinationsFacade.find_food(destination, food_category)
 
     expect(business).to be_a Business
-    expect(business.name).to eq("Angelo's Pizza Parlor")
-    expect(business.address).to eq('105 E Riverwalk, Pueblo 81003')
   end
 end
