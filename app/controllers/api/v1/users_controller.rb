@@ -1,13 +1,18 @@
 class Api::V1::UsersController < ApplicationController
   def create
-    user = User.create(user_params)
-    if user.save
-      render json: UserSerializer.format_data(User.last)
-    else
+    if params[:password] != params[:password_confirmation]
       render json: {
-        error: 'Invalid email or password',
+        error: 'Password and password confirmation do not match',
         status: 400
       }, status: 400
+    elsif User.find_by(email: params[:email])
+      render json: {
+            error: 'Email address already exists',
+            status: 400
+          }, status: 400
+    else
+      user = User.create(user_params)
+      render json: UserSerializer.format_data(user)
     end
   end
 
