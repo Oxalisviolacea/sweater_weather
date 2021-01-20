@@ -2,11 +2,16 @@ class RoadTripSerializer
   def self.format_data(road_trip)
     {
       "data": {
-        "type": 'users',
-        "id": user.id,
+        "id": nil,
+        "type": "roadtrip",
         "attributes": {
-          "email": user.email,
-          "api_key": user.api_key
+          "start_city": road_trip.origin,
+          "end_city": road_trip.destination,
+          "travel_time": road_trip.travel_time,
+          "weather_at_eta": {
+            "temperature": road_trip.temp_at_eta,
+            "conditions": road_trip.conditions_at_eta
+          }
         }
       }
     }
