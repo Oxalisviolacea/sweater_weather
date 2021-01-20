@@ -2,11 +2,11 @@ require 'rails_helper'
 
 describe 'Road Trip API Endpoint' do
   it 'it can send information about the road trip' do
-        body = {
-                  "origin": "Denver,CO",
-                  "destination": "Pueblo,CO",
-                  "api_key": "jgn983hy48thw9begh98h4539h4"
-                }
+    body = {
+      "origin": 'Denver,CO',
+      "destination": 'Pueblo,CO',
+      "api_key": 'jgn983hy48thw9begh98h4539h4'
+    }
 
     headers = { 'Content_Type' => 'application/json', 'Accept' => 'application/json' }
 

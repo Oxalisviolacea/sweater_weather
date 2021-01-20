@@ -29,7 +29,7 @@ class RoadTrip
     end
   end
 
-  def get_temp(forecast,trip_plan)
+  def get_temp(forecast, trip_plan)
     forecast_for_eta = eta(forecast, trip_plan)
     forecast_for_eta.temp.to_i
   end
