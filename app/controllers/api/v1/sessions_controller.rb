@@ -1,11 +1,12 @@
 class Api::V1::SessionsController < ApplicationController
   def show
     user = User.find_by(email: params[:email])
-    if user
+    pw_info = JSON.parse(request.body.read, symbolize_names: true)
+    if user && user.authenticate(pw_info[:password])
       render json: UserSerializer.format_data(user)
     else
       render json: {
-        error: 'Invalid email or password',
+        error: 'Credentials are bad',
         status: 400
       }, status: 400
     end
