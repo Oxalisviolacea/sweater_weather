@@ -12,8 +12,8 @@ class BusinessDestinationsSerializer
             "temperature": road_trip.temp_at_eta
           },
           "restaurant": {
-            "name": business[:name],
-            "address": business[:location][:address]
+            "name": business.name,
+            "address": business.address
           }
         }
       }

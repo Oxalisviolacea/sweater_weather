@@ -1,0 +1,73 @@
+require 'rails_helper'
+
+RSpec.describe Business do
+  it 'exists' do
+    business_info = { R: { res_id: 17_589_269, is_grocery_store: false, has_menu_status: { delivery: -1, takeaway: -1 } },
+                      apikey: 'e321d657c14b444887af50b2b28a6c2e',
+                      id: '17589269',
+                      name: "Angelo's Pizza Parlor",
+                      url: 'https://www.zomato.com/pueblo-co/angelos-pizza-parlor-pueblo?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1',
+                      location: { address: '105 E Riverwalk, Pueblo 81003',
+                                  locality: 'Pueblo',
+                                  city: 'Pueblo',
+                                  city_id: 535,
+                                  latitude: '38.2895300000',
+                                  longitude: '-104.6288840000',
+                                  zipcode: '81003',
+                                  country_id: 216,
+                                  locality_verbose: 'Pueblo, Pueblo' },
+                      switch_to_order_menu: 0,
+                      cuisines: 'Italian, Pizza',
+                      timings: '11 AM to 9 PM (Mon, Tue, Wed, Thu, Sun), 11 AM to 10 PM (Fri-Sat)',
+                      average_cost_for_two: 25,
+                      price_range: 2,
+                      currency: '$',
+                      highlights: ['Cash',
+                                   'Dinner',
+                                   'Credit Card',
+                                   'Takeaway Available',
+                                   'Lunch',
+                                   'Serves Alcohol',
+                                   'Outdoor Seating',
+                                   'Kid Friendly',
+                                   'Waterfront',
+                                   'Sports Bar',
+                                   'Indoor Seating',
+                                   'Fullbar'],
+                      offers: [],
+                      opentable_support: 0,
+                      is_zomato_book_res: 0,
+                      mezzo_provider: 'OTHER',
+                      is_book_form_web_view: 0,
+                      book_form_web_view_url: '',
+                      book_again_url: '',
+                      thumb: '',
+                      user_rating: { aggregate_rating: '3.5', rating_text: 'Good', rating_color: '9ACD32',
+                                     rating_obj: { title: { text: '3.5' }, bg_color: { type: 'lime', tint: '500' } }, votes: 63 },
+                      all_reviews_count: 28,
+                      photos_url: 'https://www.zomato.com/pueblo-co/angelos-pizza-parlor-pueblo/photos?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1#tabtop',
+                      photo_count: 1,
+                      menu_url: 'https://www.zomato.com/pueblo-co/angelos-pizza-parlor-pueblo/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1#tabtop',
+                      featured_image: '',
+                      medio_provider: false,
+                      has_online_delivery: 0,
+                      is_delivering_now: 0,
+                      store_type: '',
+                      include_bogo_offers: true,
+                      deeplink: 'zomato://restaurant/17589269',
+                      is_table_reservation_supported: 0,
+                      has_table_booking: 0,
+                      events_url: 'https://www.zomato.com/pueblo-co/angelos-pizza-parlor-pueblo/events#tabtop?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1',
+                      phone_numbers: '(719) 544-8588',
+                      all_reviews: { reviews: [{ review: [] }, { review: [] }, { review: [] }, { review: [] },
+                                               { review: [] }] },
+                      establishment: ['Fast Food'],
+                      establishment_types: [] }
+
+    business = Business.new(business_info)
+
+    expect(business).to be_a Business
+    expect(business.name).to eq("Angelo's Pizza Parlor")
+    expect(business.address).to eq('105 E Riverwalk, Pueblo 81003')
+  end
+end
